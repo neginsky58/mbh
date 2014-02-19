@@ -1,0 +1,66 @@
+// Place all the styles related to the bitcents controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.page-container {
+  min-height: 500px;
+}
+.bitcent-area
+{
+	width: 1000px;
+	height: 1000px;
+	border: 1px solid #a0a0a0;
+	position: relative;
+	background: url('/assets/8_8_pixel.png') repeat;
+	cursor: crosshair;
+}
+.box {
+	background-color: #aeaeae;
+	position: absolute;
+}
+a.buy-pixels-link {
+	cursor: pointer;
+}
+.page-buy-pixels {
+	width: 1000px;
+	
+}
+.page-buy-pixels .form-bordered {
+	border: 1px solid #efefef;
+}
+.form-actions {
+  padding: 20px 10px;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  *zoom: 1;
+}
+
+.form-actions.nobg {
+  background-color: transparent;
+}
+
+.form-actions.top {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-top: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.form-actions.fluid {
+  padding: 20px 0;
+}
+
+.form-actions.fluid > [class^="col-"] {
+  padding-left: 13px;
+}
+
+.form-actions:before,
+.form-actions:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.form-actions:after {
+  clear: both;
+}

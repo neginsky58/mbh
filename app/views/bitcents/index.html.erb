@@ -1,0 +1,8 @@
+
+<div class="bitcent-area">	
+ 	<% @bitcents.each do |bitcent| %>
+		<div style="width: <%= bitcent.width %>px; height: <%= bitcent.height %>px; top: <%= bitcent.y %>px; left: <%= bitcent.x %>px;" class="box" data-original-title="<%= bitcent.title %>">
+			<a href="<%= bitcent.link %>"><img src="<%= bitcent.image.file.url %>" width="<%= bitcent.width %>" height="<%= bitcent.height %>" /></a>
+		</div>	
+	<% end %>
+</div>

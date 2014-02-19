@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MBH</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application' %>
+
+
+  <%= stylesheet_link_tag "/assets/frontend/plugins/font-awesome/css/font-awesome.min"%>
+  <%= stylesheet_link_tag "/assets/frontend/plugins/bootstrap/css/bootstrap.min" %>
+  <%= stylesheet_link_tag "/assets/frontend/plugins/fancybox/source/jquery.fancybox" %>
+  <%= stylesheet_link_tag "/assets/frontend/plugins/revolution_slider/css/rs-style" %>
+  <%= stylesheet_link_tag "/assets/frontend/plugins/revolution_slider/rs-plugin/css/settings" %>
+  
+  <%= stylesheet_link_tag "/assets/frontend/css/style-metronic" %>
+  <%= stylesheet_link_tag "/assets/frontend/css/style.css" %>
+  <%= stylesheet_link_tag "/assets/frontend/css/style-responsive.css" %>
+  <%= stylesheet_link_tag "/assets/frontend/css/custom.css" %>
+  <script src='https://inputs.io/js/buttons.js'></script>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+<div class="page-container">
+  <div class="container"> 
+	  <%= yield %>
+  </div>
+</div>
+<%= render 'layouts/footer' %>
+
+    
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/plugins/respond.min.js"></script>  
+    <![endif]-->  
+
+    <%= javascript_include_tag "/assets/frontend/plugins/jquery-migrate-1.2.1.min" %>
+    <%= javascript_include_tag "/assets/frontend/plugins/bootstrap/js/bootstrap.min" %>
+    <%= javascript_include_tag "/assets/frontend/plugins/hover-dropdown" %>
+    
+    <%= javascript_include_tag "/assets/frontend/plugins/back-to-top" %>    
+    <!-- END CORE PLUGINS -->
+    <%= javascript_include_tag "/assets/admin/plugins/jquery-validation/dist/jquery.validate.min" %>    
+    <%= javascript_include_tag "/assets/admin/plugins/jquery-validation/dist/additional-methods.min" %>        
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+
+<div class="page-buy-pixels">
+	<h3 class="page-title">
+		Setting Pixels
+	</h3>
+	<%= form_tag({:action=>'pay_pixels'}, {:enctype=>"multipart/form-data", :method=>'post', :id=>'buy_pixels_form', :class=>'form-horizontal'} ) do %>
+
+	    <div class="form-body ">
+	    	<hr/>
+			<div class="form-group">
+				<label for="pos_x" class="col-md-3 control-label">Left (1 ~ 999): </label>	
+				<div class="col-md-9">			
+					<input id="pos_x" name="pos_x" type="text" class="form-control input-small digits" maxlength="3" required/>
+				</div>			
+			</div>
+			
+			<div class="form-group">
+				<label for="pos_y" class="col-md-3 control-label">Top (1 ~ 999): </label>	
+				<div class="col-md-9">			
+					<input id="pos_y" name="pos_y" type="text" class="form-control input-small digits" maxlength="3" required/>					
+				</div>			
+			</div>
+			
+			<div class="form-group">
+				<label for="rect_width" class="col-md-3 control-label">Width ( > 3): </label>	
+				<div class="col-md-9">			
+					<input id="rect_width" name="rect_width" type="text" class="form-control input-small digits" maxlength="3" required/>	
+				</div>			
+			</div>
+
+			<div class="form-group">
+				<label for="rect_height" class="col-md-3 control-label">Height ( > 3 ): </label>	
+				<div class="col-md-9">			
+					<input id="rect_height" name="rect_height" type="text" class="form-control input-small digits" maxlength="4" required/>							
+				</div>			
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Image: </label>
+				<div class="col-md-9">
+					<input type="file" id="pixel_image" name="avatar" accept="image/*"/ required>	
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-3 control-label">Custom Link: </label>
+				<div class="col-md-9">
+					<input id="custom_link" type="text" class="form-control"  placeholder="http://" name="custom_link" required>	
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-3 control-label">Custom Text: </label>
+				<div class="col-md-9">
+					<input id="custom_text" type="text" class="form-control"  placeholder="Please input your custom text." name="custom_text" required >	
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label">Amount ( cents ): </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control input-small" readonly id="total_amount" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label"> Bitcoin Address : </label>
+				<div class="col-md-9">
+					<input type="text" class="form-control input-medium" name="bitcoin_addr" required />
+				</div>
+			</div>			
+			<div class="form-group">
+				<label class="col-md-3 control-label"> Pin Code : </label>
+				<div class="col-md-9">
+					<input type="password" class="form-control input-small" name="pin_code" required />
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-actions">
+			<div class="col-md-offset-3 col-md-9">
+				<button type="submit" class="btn green submit">Donate with Bitcoin</button>
+				<button type="cancel" class="btn default">Cancel</button>
+			</div>
+		</div>
+	<% end %>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {	
+	$("#buy_pixels_form").validate();
+	$("#pixel_image").validate();
+	$('.form-group input.digits').keydown(function(event) {
+		if ( $.inArray(event.keyCode,[46,8,9,27,13,190]) !== -1 ||
+             // Allow: Ctrl+A
+            (event.keyCode == 65 && event.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (event.keyCode >= 35 && event.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault(); 
+            }
+
+        }
+
+	});
+	$("input#rect_width").on('change', function(){		
+		calculate_total();
+	});
+	$("input#rect_height").on('change', function(){		
+		calculate_total();		
+	});
+	function calculate_total(){
+		var width =  parseInt($('input#rect_width').val());
+        var height =  parseInt($('input#rect_height').val());
+        
+        total_pixels = width * height;
+        
+        $('#total_pixels').val(total_pixels);
+        $('#total_amount').val(total_pixels);        
+	}
+
+});
+</script>
+
+
+
